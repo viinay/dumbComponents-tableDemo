@@ -1,0 +1,21 @@
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th *ngFor="let val of head">{{val}}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let row of body;let i = index">
+        <td><input type="checkbox" #selectionCheckbox (change)="onCheckBoxChanged($event.target.checked,i)"></td>
+        <td *ngFor="let val of row" (click)="onRowClick(i)">{{val}}</td>
+        <td *ngFor="let action of actions" (click)="onActionClick(action,i)">
+          <button *ngIf="data[i][action.cond]===action.shouldBe">{{action.name}}</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>entries:{{body.length}}</div>
+</div>

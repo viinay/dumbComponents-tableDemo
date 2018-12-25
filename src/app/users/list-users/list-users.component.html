@@ -1,0 +1,7 @@
+<div *ngIf="_users">
+  <button *ngIf="_selectedUser.length >= 1">block users</button>
+  <button *ngIf="_selectedUser.length==1" (click)="onShowFormClick(_selectedUser[0])">show forms</button>
+
+  <app-lftable [data]="_users" [display]="['fullname','email_id','user_token','mail_verified','actions']" [actions]="_actions" (rowClick)="onRowClick($event)"></app-lftable>
+</div>
+
